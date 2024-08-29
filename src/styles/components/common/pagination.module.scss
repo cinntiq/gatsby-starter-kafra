@@ -1,0 +1,13 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+.pagination {
+    display: flex;
+    gap: #{variables.$item-gap};
+    justify-content: center;
+
+    .nav-item {
+        color: var(--color-text);
+        font-size: #{variables.$tiny-font-size};
+    }
+}

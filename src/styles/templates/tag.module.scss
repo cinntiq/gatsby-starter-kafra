@@ -1,0 +1,9 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+@include mixins.meta-header(".tag-header") {
+    @include mixins.meta-name(".tag-name");
+}
+
+@include mixins.meta-description(".tag-description");
+@include mixins.feed-container(".post-feed");

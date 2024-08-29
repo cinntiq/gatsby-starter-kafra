@@ -1,0 +1,75 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+.viewport {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    > * {
+        display: flex;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        margin: #{variables.$site-default-padding} auto 0 auto;
+        max-width: #{variables.$content-max-width};
+        padding: #{variables.$site-default-padding};
+        width: 100vw;
+    }
+
+    .site-header {
+        align-items: center;
+        flex-grow: 0;
+        flex-wrap: nowrap;
+
+        .site-title {
+            font-size: #{variables.$large-font-size};
+            margin-right: auto;
+        }
+    }
+
+    .site-banner {
+        flex-direction: column;
+
+        @include mixins.meta-description(".site-description");
+    }
+
+    .site-main-container {
+        flex-direction: column;
+
+        > *:not(:first-child) {
+            margin-top: #{variables.$site-default-margin};
+        }
+    }
+
+    .site-footer {
+        align-items: center;
+        flex-direction: column;
+
+        > * {
+            margin-bottom: #{variables.$site-default-margin};
+        }
+
+        .site-copyright {
+            vertical-align: middle;
+        }
+
+        .site-nav {
+            display: flex;
+            gap: #{variables.$item-gap};
+
+            .nav-item {
+                padding: auto; // dummy
+            }
+        }
+
+        @include mixins.tablet-query {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        @include mixins.desktop-query {
+            justify-content: space-between;
+        }
+    }
+}

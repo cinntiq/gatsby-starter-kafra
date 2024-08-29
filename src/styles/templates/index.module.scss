@@ -1,0 +1,3 @@
+@use "@styles/app/mixins";
+
+@include mixins.feed-container(".post-feed");

@@ -1,0 +1,20 @@
+@use "@styles/app/variables";
+
+.related-posts-nav {
+    bottom: calc(
+        #{variables.$site-default-margin} + 40px + #{variables.$item-gap}
+    );
+    position: fixed;
+    right: #{variables.$site-default-margin};
+    z-index: 1;
+
+    .related-posts-list {
+        .related-posts-item {
+            margin-top: #{variables.$item-gap};
+        }
+    }
+}
+
+.related-posts-btn {
+    margin-top: #{variables.$item-gap};
+}

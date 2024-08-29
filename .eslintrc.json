@@ -1,0 +1,52 @@
+{
+    // Set the runtime environments to allow access to global variables.
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    // The rules defined in each plug-in are applied in the order in which they are declared.
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser", // Parser for typescript grammatical interpretation.
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": ["@typescript-eslint", "react", "prettier"],
+    "root": true,
+    "rules": {
+        "arrow-parens": ["error", "always"],
+        "comma-dangle": ["error", "always-multiline"],
+        "indent": "off", // Set "off" this option because eslint and prettier conflict occurs.
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectExpression": {
+                    "minProperties": 1
+                }
+            }
+        ],
+        "object-curly-spacing": ["error", "always"],
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "quotes": ["error", "single"],
+        "semi": ["error", "never"]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+}

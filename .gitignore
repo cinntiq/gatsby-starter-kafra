@@ -1,0 +1,62 @@
+# Bower
+bower_components
+
+# Build
+build
+
+# Coverage
+coverage
+.nyc_output
+
+# Dependencies
+jspm_packages/
+node_modules/
+
+# Environment
+.env*
+
+# ESLint
+.eslintcache
+
+# Gatsby
+.cache/
+public
+gatsby-types.d.ts
+
+# Grunt
+.grunt
+
+# Logs
+*.log
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Mac
+.DS_Store
+
+# Misc
+.lock-wscript
+lib-cov
+*.tgz
+
+# npm
+.npm
+package-lock.json
+
+# Runtime data
+pids
+*.pid
+*.pid.lock
+*.seed
+
+# TypeScript
+typings/
+
+# Yarn
+.pnp/
+.pnp.js
+yarn-error.log
+yarn.lock
+.yarn-integrity

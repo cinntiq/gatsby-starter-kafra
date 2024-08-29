@@ -1,0 +1,12 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+@include mixins.article-container(".article-page") {
+    @include mixins.article-header(".page-header") {
+        @include mixins.article-title(".page-title");
+    }
+
+    .ghost-content {
+        @include mixins.ghost-content;
+    }
+}

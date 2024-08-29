@@ -1,0 +1,23 @@
+@use "@styles/app/mixins";
+
+/* Light, no-preference mode */
+:root {
+    @include mixins.light-mode;
+}
+
+/* Light mode using local storage value */
+:root[color-scheme="light"] {
+    @include mixins.light-mode;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include mixins.dark-mode;
+    }
+}
+
+/* Dark mode using local storage value */
+:root[color-scheme="dark"] {
+    @include mixins.dark-mode;
+}

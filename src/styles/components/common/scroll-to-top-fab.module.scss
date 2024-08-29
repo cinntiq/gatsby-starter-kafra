@@ -1,0 +1,8 @@
+@use "@styles/app/variables";
+
+.scroll-to-top-nav {
+    bottom: #{variables.$site-default-margin};
+    position: fixed;
+    right: #{variables.$site-default-margin};
+    z-index: 1;
+}

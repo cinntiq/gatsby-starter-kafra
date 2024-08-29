@@ -1,0 +1,12 @@
+# Folder
+.cache
+node_modules
+public
+
+# Files
+.eslintignore
+.gitignore
+.prettierignore
+LICENSE
+package-lock.json
+yarn.lock

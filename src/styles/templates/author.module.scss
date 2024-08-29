@@ -1,0 +1,18 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+@include mixins.meta-header(".author-header") {
+    @include mixins.meta-name(".author-name");
+
+    .author-nav {
+        display: flex;
+        gap: #{variables.$item-gap};
+
+        .nav-item {
+            padding: auto; // dummy
+        }
+    }
+}
+
+@include mixins.meta-description(".author-bio");
+@include mixins.feed-container(".post-feed");

@@ -1,0 +1,8 @@
+@use "@styles/app/variables";
+
+.color-scheme-toggle-btn {
+    .toggle-icon {
+        color: var(--color-text);
+        font-size: #{variables.$middle-font-size};
+    }
+}

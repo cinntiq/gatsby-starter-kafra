@@ -1,0 +1,43 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+@include mixins.article-container(".article-post") {
+    @include mixins.article-header(".post-header") {
+        .post-tags-nav {
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+
+            .nav-item {
+                color: #{variables.$secondary-color};
+                margin: #{variables.$item-gap};
+                transition: transform 0.5s;
+
+                &:hover {
+                    transform: translateY(-0.3rem);
+                }
+            }
+        }
+
+        .post-date {
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+
+            .date-item {
+                color: #{variables.$secondary-color};
+                margin: #{variables.$item-gap};
+            }
+        }
+
+        @include mixins.article-title(".post-title");
+
+        .post-feature-image {
+            filter: contrast(90%);
+        }
+    }
+
+    .ghost-content {
+        @include mixins.ghost-content;
+    }
+}

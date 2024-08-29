@@ -1,0 +1,57 @@
+/* Color Palette */
+$anti-flash-white: #f1f2f6;
+$baltic-see: #3d3d3d;
+$beekeeper: #f6e58d;
+$biscay: #303952;
+$black-pearl: #181818;
+$brewed-mustard: #e77f67;
+$bright-yarrow: #fdcb6e;
+$clouds: #ecf0f1;
+$concrete: #95a5a6;
+$keppel: #58b19f;
+$light-green: #dce6dc;
+$midnight-blue: #2c3e50;
+$modern-dark: #1e1e1e;
+$shadowed-steel: #4b4b4b;
+$silver: #bdc3c7;
+$swan-white: #f7f1e3;
+$wet-asphalt: #34495e;
+
+/* Primary, Secondary Color */
+$primary-color: $keppel;
+$secondary-color: $brewed-mustard;
+
+/* Break Points */
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 720px;
+$breakpoint-desktop: 960px;
+$breakpoint-large-desktop: 1280px;
+
+/* Content Max Width */
+$content-max-width: $breakpoint-desktop;
+
+/* Site Default Padding, Margin */
+$site-default-padding: 2.4rem;
+$site-default-margin: 2.4rem;
+
+/* Font Family */
+$app-font: "MaruBuri";
+
+/* Font Sizes */
+$tiny-font-size: 1.2rem;
+$small-font-size: 1.6rem;
+$middle-font-size: 2rem;
+$large-font-size: 2.4rem;
+
+/* Border Thickness */
+$site-border-thickness: 0.1rem;
+$highlight-border-thickness: 0.2rem;
+
+/* All Item Gap(Tags, Navs, Etc) */
+$item-gap: 0.8rem;
+
+/* Min Height Variables */
+$post-card-min-height: 16rem;
+
+/* Ghost Variables */
+$ghost-content-element-gap: 2.4rem;

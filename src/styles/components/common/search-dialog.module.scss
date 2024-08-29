@@ -1,0 +1,52 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+.search-btn {
+    .search-icon {
+        color: var(--color-text);
+        font-size: #{variables.$middle-font-size};
+    }
+}
+
+.search-dialog {
+    .search-header {
+        padding: #{variables.$site-default-padding};
+
+        .search-input {
+            width: 100%;
+
+            &::placeholder {
+                opacity: 0.4;
+            }
+        }
+    }
+
+    .search-result-area {
+        display: flex;
+        flex-direction: column;
+        gap: #{variables.$item-gap};
+
+        .search-result-item {
+            padding: #{variables.$site-default-padding};
+
+            .search-result-item-title {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                transition: color 0.5s;
+                white-space: nowrap;
+            }
+
+            .search-result-item-excerpt {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &:hover {
+                .search-result-item-title {
+                    color: #{variables.$primary-color};
+                }
+            }
+        }
+    }
+}

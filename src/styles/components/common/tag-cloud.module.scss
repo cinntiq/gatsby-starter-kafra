@@ -1,0 +1,27 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+.tag-cloud-btn {
+    .tag-icon {
+        color: var(--color-text);
+        font-size: #{variables.$middle-font-size};
+    }
+}
+
+.tag-cloud-dialog {
+    .tag-cloud-area {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: #{variables.$item-gap};
+        padding: #{variables.$site-default-padding};
+
+        .tag-item {
+            font-size: #{variables.$small-font-size};
+
+            &:hover {
+                color: #{variables.$secondary-color};
+            }
+        }
+    }
+}

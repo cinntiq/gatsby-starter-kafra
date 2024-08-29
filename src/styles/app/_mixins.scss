@@ -1,0 +1,366 @@
+@use "sass:math";
+@use "@styles/app/variables";
+
+/* ========================================================================= */
+/* # Media Query Mixins                                                      */
+/* ========================================================================= */
+
+@mixin mobile-query {
+    @media (min-width: #{variables.$breakpoint-mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet-query {
+    @media (min-width: #{variables.$breakpoint-tablet}) {
+        @content;
+    }
+}
+
+@mixin desktop-query {
+    @media (min-width: #{variables.$breakpoint-desktop}) {
+        @content;
+    }
+}
+
+@mixin large-desktop-query {
+    @media (min-width: #{variables.$breakpoint-large-desktop}) {
+        @content;
+    }
+}
+
+/* ========================================================================= */
+/* # Color Scheme Mixins                                                     */
+/* ========================================================================= */
+
+@mixin light-mode {
+    --color-body-background: #{variables.$anti-flash-white};
+    --color-border: #{variables.$biscay};
+    --color-opaque-bright: rgba(125, 125, 125, 0.05);
+    --color-selection: #{variables.$silver};
+    --color-text: #{variables.$biscay};
+}
+
+@mixin dark-mode {
+    --color-body-background: #{variables.$black-pearl};
+    --color-border: #{variables.$light-green};
+    --color-opaque-bright: rgba(225, 225, 225, 0.05);
+    --color-selection: #{variables.$concrete};
+    --color-text: #{variables.$light-green};
+}
+
+/* ========================================================================= */
+/* # Meta(Author, Tag) Mixins                                                */
+/* ========================================================================= */
+
+@mixin meta-header($class-name) {
+    #{$class-name} {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        > *:not(:first-child) {
+            margin-top: #{variables.$site-default-margin};
+        }
+
+        @content;
+    }
+}
+
+@mixin meta-name($class-name) {
+    #{$class-name} {
+        font-size: #{variables.$large-font-size};
+    }
+}
+
+@mixin meta-description($class-name) {
+    #{$class-name} {
+        text-align: center;
+        margin-bottom: #{variables.$site-default-margin * 3};
+    }
+}
+
+/* ========================================================================= */
+/* # Feed(Page, Post) Mixin                                                  */
+/* ========================================================================= */
+
+@mixin feed-container($class-name) {
+    #{$class-name} {
+        display: grid;
+        grid-gap: #{variables.$site-default-margin};
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* ========================================================================= */
+/* # Article(Page, Post) Mixin                                               */
+/* ========================================================================= */
+
+@mixin article-container($class-name) {
+    #{$class-name} {
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+
+        > *:not(:first-child) {
+            margin-top: #{variables.$site-default-margin};
+        }
+
+        @content;
+    }
+}
+
+@mixin article-header($class-name) {
+    #{$class-name} {
+        > *:not(:first-child) {
+            margin-top: #{variables.$site-default-margin};
+        }
+
+        @content;
+    }
+}
+
+@mixin article-title($class-name) {
+    #{$class-name} {
+        background-color: var(--color-opaque-bright);
+        color: #{variables.$primary-color};
+        font-size: #{variables.$large-font-size};
+        padding: #{variables.$site-default-padding};
+    }
+}
+
+/* ========================================================================= */
+/* # Ghost Content Mixin                                                     */
+/* ========================================================================= */
+
+@mixin ghost-content {
+    > *:not(:first-child) {
+        margin-top: #{variables.$ghost-content-element-gap};
+    }
+
+    > *:last-child {
+        margin-bottom: #{variables.$ghost-content-element-gap * 3};
+    }
+
+    /* Pure Ghost Styles */
+    :global {
+        a {
+            text-decoration: underline;
+            text-decoration-thickness: #{variables.$site-border-thickness};
+            text-underline-position: under;
+
+            &:hover {
+                color: #{variables.$primary-color};
+            }
+        }
+
+        blockquote {
+            border-left: #{variables.$site-default-padding} solid #{variables.$primary-color};
+            padding-left: #{variables.$site-default-padding};
+            position: relative;
+
+            &::before {
+                content: "\201C";
+                font-size: #{variables.$site-default-padding * 2};
+                left: -#{variables.$site-default-padding};
+                position: absolute;
+            }
+        }
+
+        /* Apply styles to inline code elements, excluding those styled by highlight.js */
+        code:not(.hljs) {
+            background-color: var(--color-opaque-bright);
+        }
+
+        figure {
+            figcaption {
+                padding: #{variables.$site-default-padding};
+                text-align: center;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            padding: #{variables.$site-default-padding} 0;
+        }
+
+        h1,
+        h2 {
+            border-bottom: #{variables.$highlight-border-thickness} solid #{variables.$primary-color};
+            color: #{variables.$primary-color};
+        }
+
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #{variables.$secondary-color};
+        }
+
+        ol,
+        ul {
+            padding-inline-start: #{variables.$site-default-padding};
+
+            li:not(:first-child) {
+                margin-top: #{variables.$middle-font-size};
+            }
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        p {
+            line-height: #{variables.$middle-font-size * 2};
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        .kg-card {
+            &.kg-bookmark-card {
+                .kg-bookmark-container {
+                    background-color: var(--color-opaque-bright);
+                    color: var(--color-text);
+                    display: flex;
+                    flex-direction: column;
+                    text-decoration: none;
+                    transition: transform 0.5s;
+
+                    .kg-bookmark-content {
+                        flex-grow: 1;
+                        padding: #{variables.$site-default-padding};
+
+                        .kg-bookmark-title {
+                            font-weight: bold;
+                        }
+
+                        .kg-bookmark-description {
+                            font-weight: lighter;
+                            margin-top: #{variables.$site-default-margin};
+                        }
+
+                        .kg-bookmark-metadata {
+                            align-items: center;
+                            display: flex;
+                            margin-top: #{variables.$site-default-margin};
+
+                            .kg-bookmark-icon {
+                                height: #{variables.$middle-font-size};
+                                margin-right: math.div(
+                                    variables.$site-default-margin,
+                                    2
+                                );
+                                width: #{variables.$middle-font-size};
+                            }
+                        }
+                    }
+
+                    .kg-bookmark-thumbnail {
+                        img {
+                            display: block;
+                            height: 100%;
+                            object-fit: cover;
+                            width: 100%;
+                        }
+                    }
+
+                    &:hover {
+                        transform: translateY(-0.3rem);
+                    }
+                }
+
+                @include tablet-query {
+                    .kg-bookmark-container {
+                        flex-direction: row;
+
+                        .kg-bookmark-thumbnail {
+                            flex-shrink: 0;
+                            width: 33%;
+                        }
+                    }
+                }
+            }
+
+            &.kg-callout-card {
+                align-items: center;
+                background-color: var(--color-opaque-bright);
+                border-left: #{variables.$highlight-border-thickness} solid #{variables.$primary-color};
+                display: flex;
+                padding: #{variables.$site-default-padding};
+
+                .kg-callout-emoji {
+                    margin-right: math.div(variables.$site-default-margin, 2);
+                }
+            }
+
+            &.kg-code-card {
+                pre {
+                    margin: 0;
+                }
+            }
+
+            &.kg-gallery-card {
+                .kg-gallery-container {
+                    .kg-gallery-row {
+                        display: grid;
+                        grid-template-columns: repeat(1, 1fr);
+
+                        .kg-gallery-image {
+                            img {
+                                height: 100%;
+                                object-fit: cover;
+                                width: 100%;
+                            }
+                        }
+
+                        @include tablet-query {
+                            grid-template-columns: repeat(3, 1fr);
+                        }
+                    }
+                }
+            }
+
+            &.kg-image-card {
+                display: flex;
+                flex-direction: column;
+            }
+
+            &.kg-toggle-card {
+                background-color: var(--color-opaque-bright);
+                border-left: #{variables.$highlight-border-thickness} solid #{variables.$primary-color};
+                cursor: pointer;
+                padding: #{variables.$site-default-padding};
+
+                &:hover .kg-toggle-content {
+                    margin-top: #{variables.$site-default-margin};
+                    max-height: #{variables.$breakpoint-large-desktop};
+                    overflow: auto;
+                    transition: max-height 2s; /* Apply Only Hover Transition */
+                }
+
+                .kg-toggle-heading {
+                    .kg-toggle-heading-text {
+                        font-size: #{variables.$middle-font-size};
+                        padding: 0;
+                    }
+                }
+
+                .kg-toggle-card-icon {
+                    display: none;
+                }
+
+                .kg-toggle-content {
+                    max-height: 0;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+@use "@styles/app/variables";
+
+.site-main-container {
+    padding: #{variables.$site-default-padding};
+
+    .page-not-routed-title {
+        font-size: #{variables.$large-font-size};
+        margin-bottom: #{variables.$site-default-margin};
+    }
+
+    .page-not-routed-description {
+        margin-bottom: #{variables.$site-default-margin};
+    }
+
+    .go-to-home {
+        text-decoration: underline;
+        text-decoration-thickness: #{variables.$site-border-thickness};
+        text-underline-position: under;
+    }
+}

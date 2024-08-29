@@ -1,0 +1,10 @@
+@use "@styles/app/variables";
+
+.share-btn {
+    align-self: center;
+
+    .share-icon {
+        color: var(--color-text);
+        font-size: #{variables.$large-font-size};
+    }
+}

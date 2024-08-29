@@ -1,0 +1,18 @@
+@use "@styles/app/mixins";
+@use "@styles/app/variables";
+
+.navigation {
+    display: flex;
+    gap: #{variables.$item-gap};
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .nav-item {
+        color: #{variables.$secondary-color};
+        transition: transform 0.5s;
+
+        &:hover {
+            transform: translateY(-0.3rem);
+        }
+    }
+}
