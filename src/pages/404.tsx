@@ -1,6 +1,6 @@
-import * as React from "react"
-import { graphql, Link, PageProps } from "gatsby"
 import * as styles from "@styles/pages/404.module.scss"
+import { graphql, Link, PageProps } from "gatsby"
+import * as React from "react"
 
 const title = "404: Not Found"
 const description = "You just hit a route that does not exist…"

@@ -1,7 +1,7 @@
-import * as React from "react"
-import { IconButton, SvgIcon } from "@mui/material"
 import { Share } from "@mui/icons-material"
+import { IconButton, SvgIcon } from "@mui/material"
 import * as styles from "@styles/components/common/share-button.module.scss"
+import * as React from "react"
 
 const ShareButton = ({ url }: { url: string }) => {
     const handleShare = () => {

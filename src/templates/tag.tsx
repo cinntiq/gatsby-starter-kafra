@@ -1,8 +1,8 @@
-import * as React from "react"
-import { graphql, PageProps } from "gatsby"
 import { Layout, PostCard, Pagination } from "@components/common"
 import { TagMeta } from "@components/meta/tag-meta"
 import * as styles from "@styles/templates/tag.module.scss"
+import { graphql, PageProps } from "gatsby"
+import * as React from "react"
 
 export const tagQuery = graphql`
     query Tag($slug: String!, $limit: Int!, $skip: Int!) {
@@ -60,7 +60,7 @@ const Tag = ({
 export const Head = ({
     data,
     location,
-}: PageProps<Queries.TagQuery, {}, Location>) => (
+}: PageProps<Queries.TagQuery, object, Location>) => (
     <TagMeta
         tag={data.ghostTag}
         canonical={location.pathname}

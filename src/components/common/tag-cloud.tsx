@@ -1,10 +1,10 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import { useGhostTag } from "@hooks/use-ghost-tag"
+import { Tag } from "@mui/icons-material"
 import { Dialog, IconButton, Slide, SvgIcon } from "@mui/material"
 import { TransitionProps } from "@mui/material/transitions"
-import { Tag } from "@mui/icons-material"
-import { useGhostTag } from "@hooks/use-ghost-tag"
 import * as styles from "@styles/components/common/tag-cloud.module.scss"
+import { Link } from "gatsby"
+import * as React from "react"
 
 const dialogTransition = React.forwardRef(function Transition(
     props: TransitionProps & {

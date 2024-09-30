@@ -1,8 +1,3 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/react"
-import { Facebook, Home, Info, RssFeed, Twitter } from "@mui/icons-material"
 import {
     ColorSchemeToggler,
     Navigation,
@@ -11,9 +6,14 @@ import {
     ScrollToTopFab,
 } from "@components/common"
 import { ColorSchemeProvider } from "@contexts/color-scheme-provider"
-import { useSiteMetadata } from "@hooks/use-site-metadata"
 import { useGhostSettings } from "@hooks/use-ghost-settings"
+import { useSiteMetadata } from "@hooks/use-site-metadata"
+import { Facebook, Home, Info, RssFeed, Twitter } from "@mui/icons-material"
 import * as styles from "@styles/components/common/layout.module.scss"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Link } from "gatsby"
+import * as React from "react"
 
 const Layout = ({
     children,

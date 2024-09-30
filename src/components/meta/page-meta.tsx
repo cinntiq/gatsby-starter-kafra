@@ -1,8 +1,8 @@
-import * as React from "react"
 import { ImageMeta } from "@components/meta/image-meta"
+import { useGhostSettings } from "@hooks/use-ghost-settings"
 import { useSiteMetadata } from "@hooks/use-site-metadata"
 import { resolve } from "@utils/url-resolver"
-import { useGhostSettings } from "@hooks/use-ghost-settings"
+import * as React from "react"
 
 export const PageMeta = ({
     canonical,

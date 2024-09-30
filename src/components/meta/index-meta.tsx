@@ -1,7 +1,7 @@
-import * as React from "react"
 import { ImageMeta } from "@components/meta/image-meta"
 import { useSiteMetadata } from "@hooks/use-site-metadata"
 import { resolve } from "@utils/url-resolver"
+import * as React from "react"
 
 export const IndexMeta = ({
     canonical,

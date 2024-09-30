@@ -1,8 +1,8 @@
-import * as React from "react"
-import { IconButton, SvgIcon } from "@mui/material"
-import { DarkMode, LightMode } from "@mui/icons-material"
 import { useColorScheme } from "@contexts/color-scheme-provider"
+import { DarkMode, LightMode } from "@mui/icons-material"
+import { IconButton, SvgIcon } from "@mui/material"
 import * as styles from "@styles/components/common/color-scheme-toggler.module.scss"
+import * as React from "react"
 
 const ColorSchemeToggler = () => {
     const { colorScheme, toggleColorScheme } = useColorScheme()

@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "gatsby"
 import * as styles from "@styles/components/common/post-author.module.scss"
+import { Link } from "gatsby"
+import React from "react"
 
 const PostAuthor = ({
     author,

@@ -1,5 +1,3 @@
-import * as React from "react"
-import { graphql, PageProps, Link } from "gatsby"
 import {
     Layout,
     PostAuthor,
@@ -8,9 +6,11 @@ import {
     Utterances,
 } from "@components/common"
 import { PostMeta } from "@components/meta/post-meta"
-import featureImage from "@images/feature-image-1280x720.webp"
 import avatar from "@images/avatar-64x64.webp"
+import featureImage from "@images/feature-image-1280x720.webp"
 import * as styles from "@styles/templates/post.module.scss"
+import { graphql, PageProps, Link } from "gatsby"
+import * as React from "react"
 
 export const postQuery = graphql`
     query Post($slug: String!) {
@@ -80,7 +80,7 @@ const Post = ({
 export const Head = ({
     data,
     location,
-}: PageProps<Queries.PostQuery, {}, Location>) => (
+}: PageProps<Queries.PostQuery, object, Location>) => (
     <PostMeta
         post={data.ghostPost}
         canonical={location.pathname}

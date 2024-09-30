@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Link } from "gatsby"
 import { Pagination as Paginate, PaginationItem } from "@mui/material"
 import * as styles from "@styles/components/common/pagination.module.scss"
+import { Link } from "gatsby"
+import * as React from "react"
 
 const Pagination = ({
     pageContext: { numberOfPages, pageNumber, pathPrefix },

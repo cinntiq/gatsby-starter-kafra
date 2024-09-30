@@ -1,17 +1,52 @@
-import type { GatsbyConfig, IPluginRefOptions } from "gatsby"
-import dotenv from "dotenv"
 import path from "path"
+
+import dotenv from "dotenv"
+import type { GatsbyConfig, IPluginRefOptions } from "gatsby"
+
 import appConfig from "./app-config.json"
 
-// Load environment variables based on the current Node environment
 dotenv.config({
     path: `.env.${process.env.NODE_ENV}`,
 })
 
-/**
- * Ghost CMS configuration
- * Sets up the connection to the Ghost CMS API
- */
+// Ghost CMS related interfaces
+interface GhostTag {
+    name: string
+    visibility: string
+}
+
+interface GhostAuthor {
+    name: string
+}
+
+interface GhostPost {
+    id: string
+    title: string
+    excerpt: string
+    custom_excerpt?: string
+    slug: string
+    published_at: string
+    primary_author: GhostAuthor
+    tags: GhostTag[]
+    html: string
+    plaintext?: string
+}
+
+interface GhostSettings {
+    title: string
+    description: string
+}
+
+interface GhostQueryResult {
+    allGhostPost: {
+        edges: Array<{
+            node: GhostPost
+        }>
+    }
+    ghostSettings: GhostSettings
+}
+
+// Ghost CMS configuration
 const ghostConfig: NonNullable<IPluginRefOptions> & {
     apiUrl: string
     contentApiKey: string
@@ -21,10 +56,7 @@ const ghostConfig: NonNullable<IPluginRefOptions> & {
         process.env.GHOST_CONTENT_API_KEY || "9cc5c67c358edfdd81455149d0",
 }
 
-/**
- * Site metadata configuration
- * Defines global site properties and manifest settings
- */
+// Site metadata configuration
 const siteMetadata: NonNullable<GatsbyConfig["siteMetadata"]> & {
     siteUrl: string
     postsPerPage: number
@@ -62,23 +94,17 @@ const siteMetadata: NonNullable<GatsbyConfig["siteMetadata"]> & {
     },
 }
 
-/**
- * Main Gatsby configuration object
- * Defines all the Gatsby-specific settings and plugins
- */
+// Main Gatsby configuration
 const config: GatsbyConfig = {
     graphqlTypegen: true,
     siteMetadata: siteMetadata,
     trailingSlash: "always",
     plugins: [
-        // Essential Gatsby plugins
         "gatsby-plugin-catch-links",
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
         "gatsby-plugin-sass",
-
-        // SEO and site optimization plugins
         {
             resolve: "gatsby-plugin-manifest",
             options: siteMetadata.manifest,
@@ -92,8 +118,6 @@ const config: GatsbyConfig = {
             },
         },
         "gatsby-plugin-sitemap",
-
-        // Content source plugins
         {
             resolve: "gatsby-source-filesystem",
             options: {
@@ -112,40 +136,45 @@ const config: GatsbyConfig = {
             resolve: "gatsby-source-ghost",
             options: ghostConfig,
         },
-
-        // RSS feed generation plugin
         {
             resolve: "gatsby-plugin-feed",
             options: {
                 feeds: [
                     {
                         title: "RSS Feed",
-                        serialize: ({ query: { allGhostPost } }: any) =>
-                            allGhostPost.edges.map(({ node }: any) => ({
-                                title: node?.title,
+                        serialize: ({
+                            query: { allGhostPost },
+                        }: {
+                            query: GhostQueryResult
+                        }) =>
+                            allGhostPost.edges.map(({ node }) => ({
+                                title: node.title,
                                 description:
-                                    node?.custom_excerpt ?? node?.excerpt,
-                                guid: node?.id,
-                                url: `${siteMetadata.siteUrl}/${node?.slug}/`,
-                                author: node?.primary_author.name,
-                                date: node?.published_at,
-                                categories: node?.tags
+                                    node.custom_excerpt ?? node.excerpt,
+                                guid: node.id,
+                                url: `${siteMetadata.siteUrl}/${node.slug}/`,
+                                author: node.primary_author.name,
+                                date: node.published_at,
+                                categories: node.tags
                                     .filter(
-                                        (tag: any) =>
-                                            tag?.visibility === "public",
+                                        (tag) => tag.visibility === "public",
                                     )
-                                    .map((publicTag: any) => publicTag?.name),
+                                    .map((publicTag) => publicTag.name),
                                 custom_elements: [
                                     {
                                         "content:encoded": {
-                                            _cdata: node?.html,
+                                            _cdata: node.html,
                                         },
                                     },
                                 ],
                             })),
-                        setup: ({ query: { ghostSettings } }: any) => ({
-                            title: ghostSettings?.title,
-                            description: ghostSettings?.description,
+                        setup: ({
+                            query: { ghostSettings },
+                        }: {
+                            query: GhostQueryResult
+                        }) => ({
+                            title: ghostSettings.title,
+                            description: ghostSettings.description,
                             generator: "Ghost 5.0",
                             feed_url: `${siteMetadata.siteUrl}/rss/`,
                             site_url: `${siteMetadata.siteUrl}/`,
@@ -189,8 +218,6 @@ const config: GatsbyConfig = {
                 ],
             },
         },
-
-        // Search functionality plugin
         {
             resolve: "gatsby-plugin-fusejs",
             options: {
@@ -209,8 +236,8 @@ const config: GatsbyConfig = {
                     }
                 }`,
                 keys: ["title", "excerpt", "custom_excerpt", "plaintext"],
-                normalizer: ({ data }: any) =>
-                    data.allGhostPost.edges.map(({ node }: any) => ({
+                normalizer: ({ data }: { data: GhostQueryResult }) =>
+                    data.allGhostPost.edges.map(({ node }) => ({
                         id: node.id,
                         title: node.title,
                         slug: node.slug,

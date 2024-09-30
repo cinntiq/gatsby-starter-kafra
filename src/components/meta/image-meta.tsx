@@ -1,5 +1,5 @@
-import * as React from "react"
 import { useSiteMetadata } from "@hooks/use-site-metadata"
+import * as React from "react"
 
 export const ImageMeta = ({
     imgSrc,

@@ -1,8 +1,8 @@
-import React, { createContext, useState, useContext, useEffect } from "react"
 import {
     getColorScheme,
     toggleColorScheme as toggleColorSchemeUtil,
 } from "@utils/color-scheme"
+import React, { createContext, useState, useContext, useEffect } from "react"
 
 // Define color scheme types
 type ColorScheme = "light" | "dark"

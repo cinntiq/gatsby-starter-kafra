@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-import { Fab, Tooltip, Zoom } from "@mui/material"
-import { ChevronLeft, ChevronRight, Article } from "@mui/icons-material"
 import { useRelatedPosts } from "@hooks/use-related-posts"
 import { useScrollVisibility } from "@hooks/use-scroll-visibility"
-import { fabStyle } from "@utils/fab-styles"
+import { ChevronLeft, ChevronRight, Article } from "@mui/icons-material"
+import { Fab, Tooltip, Zoom } from "@mui/material"
 import * as styles from "@styles/components/common/related-posts-fab.module.scss"
+import { fabStyle } from "@utils/fab-styles"
+import { Link } from "gatsby"
+import React, { useState } from "react"
 
 const RelatedPosts: React.FC<{
     currentSlug: string | undefined
@@ -46,7 +46,7 @@ const RelatedPosts: React.FC<{
     return (
         <nav className={styles.relatedPostsNav}>
             <ul className={styles.relatedPostsList}>
-                {relatedPosts.map(({ post, label, icon }) => (
+                {relatedPosts.map(({ post, icon }) => (
                     <Zoom
                         in={isExpanded}
                         key={post.slug}>

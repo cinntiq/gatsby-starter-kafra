@@ -9,7 +9,10 @@ import Fuse from "fuse.js"
  */
 export const getSearchResults = (
     query: string,
-    fusejsObj: { data: Array<{ [key: string]: any }>; index?: string } | null,
+    fusejsObj: {
+        data: Array<{ [key: string]: unknown }>
+        index?: string
+    } | null,
 ): ReadonlyArray<{
     item: {
         id: string

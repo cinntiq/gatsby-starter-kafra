@@ -1,6 +1,6 @@
-import * as React from "react"
-import { Link } from "gatsby"
 import * as styles from "@styles/components/common/navigation.module.scss"
+import { Link } from "gatsby"
+import * as React from "react"
 
 export const Navigation = ({
     items,

@@ -1,5 +1,7 @@
-import type { GatsbyNode } from "gatsby"
 import path from "path"
+
+import type { GatsbyNode } from "gatsby"
+
 import { postsPerPage } from "./app-config.json"
 
 /**
@@ -81,7 +83,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
         items: Array<{ node: { slug: string } }>
         component: string
         pathPrefix?: string
-        context?: Record<string, any>
+        context?: Record<string, unknown>
     }) => {
         const numPages = Math.ceil(items.length / postsPerPage)
         Array.from({ length: numPages }).forEach((_, i) => {

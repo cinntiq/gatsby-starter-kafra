@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Link } from "gatsby"
 import { CardActionArea } from "@mui/material"
 import * as styles from "@styles/components/common/post-card.module.scss"
+import { Link } from "gatsby"
+import * as React from "react"
 
 const PostCard = ({
     post: { custom_excerpt, feature_image, excerpt, slug, tags, title },

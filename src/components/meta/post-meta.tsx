@@ -1,9 +1,9 @@
-import * as React from "react"
 import { ImageMeta } from "@components/meta/image-meta"
-import { getAuthorSameAs } from "@utils/author-same-as"
-import { useSiteMetadata } from "@hooks/use-site-metadata"
 import { useGhostSettings } from "@hooks/use-ghost-settings"
+import { useSiteMetadata } from "@hooks/use-site-metadata"
+import { getAuthorSameAs } from "@utils/author-same-as"
 import { resolve } from "@utils/url-resolver"
+import * as React from "react"
 
 export const PostMeta = ({
     canonical,

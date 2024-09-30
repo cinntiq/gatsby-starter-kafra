@@ -1,5 +1,5 @@
-import * as React from "react"
 import type { GatsbySSR } from "gatsby"
+import * as React from "react"
 
 // JavaScript code to preload the color scheme
 // This function runs in the browser to set the initial color scheme

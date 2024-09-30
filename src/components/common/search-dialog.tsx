@@ -1,11 +1,11 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import { useFusejs } from "@hooks/use-fuse-js"
+import { Search } from "@mui/icons-material"
 import { Dialog, IconButton, Slide, SvgIcon } from "@mui/material"
 import { TransitionProps } from "@mui/material/transitions"
-import { Search } from "@mui/icons-material"
-import { useFusejs } from "@hooks/use-fuse-js"
-import { getSearchResults } from "@utils/post-search"
 import * as styles from "@styles/components/common/search-dialog.module.scss"
+import { getSearchResults } from "@utils/post-search"
+import { Link } from "gatsby"
+import * as React from "react"
 
 const dialogTransition = React.forwardRef(function Transition(
     props: TransitionProps & {

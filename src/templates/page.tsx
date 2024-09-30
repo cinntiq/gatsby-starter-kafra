@@ -1,8 +1,8 @@
-import * as React from "react"
-import { graphql, PageProps } from "gatsby"
 import { Layout } from "@components/common"
 import { PageMeta } from "@components/meta/page-meta"
 import * as styles from "@styles/templates/page.module.scss"
+import { graphql, PageProps } from "gatsby"
+import * as React from "react"
 
 export const pageQuery = graphql`
     query Page($slug: String!) {
@@ -33,7 +33,7 @@ const Page = ({ data: pageQuery }: PageProps<Queries.PageQuery>) => (
 export const Head = ({
     data,
     location,
-}: PageProps<Queries.PageQuery, {}, Location>) => (
+}: PageProps<Queries.PageQuery, object, Location>) => (
     <PageMeta
         page={data.ghostPage}
         canonical={location.pathname}

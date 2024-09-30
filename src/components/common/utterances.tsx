@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react"
-import { useSiteMetadata } from "@hooks/use-site-metadata"
 import { useColorScheme } from "@contexts/color-scheme-provider"
+import { useSiteMetadata } from "@hooks/use-site-metadata"
 import * as styles from "@styles/components/common/utterances.module.scss"
+import React, { useEffect, useRef } from "react"
 
 const Utterances = ({ issueTerm = "pathname" }: { issueTerm?: string }) => {
     const data = useSiteMetadata()
@@ -33,7 +33,9 @@ const Utterances = ({ issueTerm = "pathname" }: { issueTerm?: string }) => {
         container?.appendChild(script)
 
         return () => {
-            container && (container.innerHTML = "")
+            if (container) {
+                container.innerHTML = ""
+            }
         }
     }, [repo, issueTerm, colorScheme])
 

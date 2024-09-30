@@ -1,9 +1,9 @@
-import * as React from "react"
-import { graphql, PageProps } from "gatsby"
 import { Layout, Pagination, PostCard } from "@components/common"
 import { AuthorMeta } from "@components/meta/author-meta"
 import { Facebook, Language as Website, Twitter } from "@mui/icons-material"
 import * as styles from "@styles/templates/author.module.scss"
+import { graphql, PageProps } from "gatsby"
+import * as React from "react"
 
 export const authorQuery = graphql`
     query Author($slug: String!, $limit: Int!, $skip: Int!) {
@@ -100,7 +100,7 @@ const Author = ({
 export const Head = ({
     data,
     location,
-}: PageProps<Queries.AuthorQuery, {}, Location>) => (
+}: PageProps<Queries.AuthorQuery, object, Location>) => (
     <AuthorMeta
         author={data.ghostAuthor}
         canonical={location.pathname}
