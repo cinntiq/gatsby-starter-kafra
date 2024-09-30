@@ -4,26 +4,23 @@ import {
 } from "@utils/color-scheme"
 import React, { createContext, useState, useContext, useEffect } from "react"
 
-// Define color scheme types
-type ColorScheme = "light" | "dark"
-
-// Define the context shape for color scheme management
-interface ColorSchemeContextType {
-    colorScheme: ColorScheme
-    toggleColorScheme: () => void
-}
-
 // Create a context for color scheme
-const ColorSchemeContext = createContext<ColorSchemeContextType | undefined>(
-    undefined,
-)
+const ColorSchemeContext = createContext<
+    | {
+          colorScheme: "light" | "dark"
+          toggleColorScheme: () => void
+      }
+    | undefined
+>(undefined)
 
 // ColorSchemeProvider component to manage app-wide color scheme
-export const ColorSchemeProvider: React.FC<{ children: React.ReactNode }> = ({
+export const ColorSchemeProvider = ({
     children,
+}: {
+    children: React.ReactNode
 }) => {
     // Initialize color scheme state
-    const [colorScheme, setColorScheme] = useState<ColorScheme>(() =>
+    const [colorScheme, setColorScheme] = useState<"light" | "dark">(() =>
         getColorScheme(),
     )
 

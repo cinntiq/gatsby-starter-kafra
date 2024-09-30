@@ -7,10 +7,13 @@ import { fabStyle } from "@utils/fab-styles"
 import { Link } from "gatsby"
 import React, { useState } from "react"
 
-const RelatedPosts: React.FC<{
+const RelatedPosts = ({
+    currentSlug,
+    currentPrimaryTag,
+}: {
     currentSlug: string | undefined
     currentPrimaryTag: string | undefined
-}> = ({ currentSlug, currentPrimaryTag }) => {
+}) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const { prevPost, nextPost } = useRelatedPosts(
         currentSlug ?? "",

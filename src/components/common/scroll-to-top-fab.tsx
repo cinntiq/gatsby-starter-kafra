@@ -5,7 +5,7 @@ import * as styles from "@styles/components/common/scroll-to-top-fab.module.scss
 import { fabStyle } from "@utils/fab-styles"
 import React from "react"
 
-const ScrollToTopFab: React.FC = () => {
+const ScrollToTopFab = () => {
     const isVisible = useScrollVisibility()
 
     const scrollToTop = () => {
